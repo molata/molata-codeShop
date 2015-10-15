@@ -7,10 +7,10 @@ public class Inventory {
 	private List guitars;
 
 	public Inventory() {
-		guitars = new LinkedList<Guitar>();
+		guitars = new LinkedList<Instrment>();
 	}
 	
-	public void addGuitar(Guitar guitar){
+	public void addGuitar(Instrment guitar){
 		guitars.add(guitar);
 	}
 
@@ -22,10 +22,10 @@ public class Inventory {
 		this.guitars = guitars;
 	}
 	
-	public List searchGuitar(GuitarSpec guitarSpec){
-		List<Guitar> validGuitars = new LinkedList<Guitar>();
+	public List searchGuitar(InstrumentSpec guitarSpec){
+		List<Instrment> validGuitars = new LinkedList<Instrment>();
 		for (Iterator i = guitars.iterator(); i.hasNext();){
-			Guitar guitar = (Guitar) i.next();
+			Instrment guitar = (Instrment) i.next();
 			if (guitar.getGuitarSpec().equals(guitarSpec)){
 				validGuitars.add(guitar);
 			}

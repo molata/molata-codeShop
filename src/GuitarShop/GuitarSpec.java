@@ -4,50 +4,29 @@ import GuitarEnum.GuitarBuilder;
 import GuitarEnum.GuitarType;
 import GuitarEnum.GuitarWood;
 
-/*º™À˚ Ù–‘¿‡*/
-public class GuitarSpec {
-	
-	private  GuitarBuilder builder;
-	private String model;
-	private GuitarType type;
-	private GuitarWood frontWood;
-	private GuitarWood backWood;
-	public GuitarSpec(GuitarBuilder builder, String model, GuitarType type, GuitarWood frontWood, GuitarWood backWood) {
-		super();
-		this.builder = builder;
-		this.model = model;
-		this.type = type;
-		this.frontWood = frontWood;
-		this.backWood = backWood;
-	}
-	public GuitarBuilder getBuilder() {
-		return builder;
-	}
-	public String getModel() {
-		return model;
-	}
-	public GuitarType getType() {
-		return type;
-	}
-	public GuitarWood getFrontWood() {
-		return frontWood;
-	}
-	public GuitarWood getBackWood() {
-		return backWood;
+public class GuitarSpec extends InstrumentSpec {
+	private int numString;
+	public GuitarSpec(GuitarBuilder builder, String model, GuitarType type, 
+			GuitarWood frontWood, GuitarWood backWood, int numString) {
+		super(builder, model, type, frontWood, backWood);
+		// TODO Auto-generated constructor stub
+		this.numString = numString;
 	}
 	
-	public boolean matchGuitar (GuitarSpec guitarSpec){
-		if (!this.builder.equals(guitarSpec.builder)){
+	public int getNumString() {
+		return numString;
+	}
+
+	@Override
+	public boolean matchGuitar(InstrumentSpec otherGuitarSpec) {
+		// TODO Auto-generated method stub
+		if (!super.matchGuitar(otherGuitarSpec))
 			return false;
-		}else if (!this.model.equals(guitarSpec.model)){
+		if (!(otherGuitarSpec instanceof GuitarSpec))
 			return false;
-		}else if (!this.type.equals(guitarSpec.type)){
+		GuitarSpec spec = (GuitarSpec) otherGuitarSpec;
+		if (this.numString != spec.numString)
 			return false;
-		}else if (!this.frontWood.equals(guitarSpec.frontWood)){
-			return false;
-		}else if (!this.backWood.equals(guitarSpec.backWood)){
-			return false;
-		}
 		return true;
 	}
 }
